@@ -8,10 +8,10 @@ class IndexRoutes {
   }
 
   config(): void {
-    this.router.get('/', (req, res) => res.send('Olá Mundo'));
+    this.router.get('/', (req, res) => res.send('Olá Mundo novo'));
   }
 }
 
-const indexRoutes = new IndexRoutes();
+// const indexRoutes = new IndexRoutes();
 
-export default indexRoutes.router;
+export default new IndexRoutes().router;
