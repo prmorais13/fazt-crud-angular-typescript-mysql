@@ -10,7 +10,17 @@ class GamesRoutes {
   }
 
   config(): void {
-    this.router.get('/', gamesController.games);
+    // this.router.get('/', gamesController.games);
+    this.router
+      .route('/')
+      .get(gamesController.gamesAll)
+      .post(gamesController.gameCreate);
+
+    this.router
+      .route('/:id')
+      .get(gamesController.gameId)
+      .put(gamesController.gameUpdate)
+      .delete(gamesController.gameDelete);
   }
 }
 
