@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { GamesService } from './../../services/games.service';
+import { Component, OnInit, HostBinding } from '@angular/core';
+
+import { Game } from './../../models/Game';
 
 @Component({
   selector: 'app-game-form',
@@ -6,10 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-form.component.css']
 })
 export class GameFormComponent implements OnInit {
+  @HostBinding('class') classes = 'row';
 
-  constructor() { }
+  game: Game = {
+    id: 0,
+    title: '',
+    description: '',
+    created_at: new Date()
+  };
 
-  ngOnInit() {
+  constructor(private gameService: GamesService) {}
+
+  ngOnInit() {}
+
+  saveNewGame() {
+    delete this.game.created_at;
+    delete this.game.id;
+
+    this.gameService.saveGame(this.game).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => console.log(err)
+    );
   }
-
 }
