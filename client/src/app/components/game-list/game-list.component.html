@@ -4,14 +4,16 @@
       class="card-header bg-dark text-white d-flex justify-content-between align-item-center"
     >
       {{ game.title }}
-      <button class="btn btn-danger">
+      <button class="btn btn-danger" (click)="deleteGame(game.id)">
         <i class="far fa-trash-alt"></i>
       </button>
     </div>
     <img [src]="game.image" class="card-img-top" />
     <div class="card-body">
       <p>{{ game.description }}</p>
-      <a href="" class="btn btn-info btn-block">Editar Jogo</a>
+      <a [routerLink]="['/games/edit', game.id]" class="btn btn-info btn-block"
+        >Editar Jogo</a
+      >
     </div>
   </div>
 </div>

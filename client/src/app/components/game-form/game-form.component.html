@@ -31,7 +31,7 @@
           autofocus
         />
       </div>
-      <button class="btn btn-success btn-block" (click)="saveNewGame()">
+      <button class="btn btn-success btn-block" (click)="saveOrUpadate()">
         Salvar
       </button>
     </form>
@@ -41,7 +41,7 @@
   <div class="card card-body text-center">
     <img
       [src]="
-        game.image == isEmpty || game.image == ''
+        game.image == null || game.image == ''
           ? 'assets/noimage.png'
           : game.image
       "
